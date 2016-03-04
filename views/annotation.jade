@@ -1,0 +1,54 @@
+doctype html
+html(lang="en")
+	head
+		meta(charset="utf-8")
+		meta(http-equiv="X-UA-Compatible" ,content="IE=edge")
+		meta(name="viewport",content="width=device-width, initial-scale=1")
+		script(type="text/javascript" src="/js/jquery.min.js")
+		link(rel="stylesheet",type="text/css",href="/css/index.css")
+		link(rel="stylesheet",type="text/css",href="/css/bootstrap.min.css")
+		title Annotation
+	body
+		h1(align="center") Human augmented annotation system
+		h2(align="center") Author: Qi Zhu, Yong Jae Lee
+		div(class="row",style="padding:30px")
+			div(class="col-md-6 col-md-offset-3")
+				h3 Notes:
+				li Please annotate the same facial/shoe region in each pair
+				li If you choose 'A and B have similar relative strengths of attribute', you do not need to provide any annotations
+				li It is okay to annotate a larger-sized region when it is ambiguous to annotate a specific region
+				h3="Annotator:"+params.user+"	Dataset:"+params.dat+"	Attribute:"+params.attr+"	Page:"+page
+		div(class="row" style="height:300px")
+			div(id="containerA" class="col-md-4 col-md-offset-2")
+				img(id="Canvas",src="/img/"+imageA+".jpg",width="300",height="300",style="z-index:0")
+				canvas(id="cursor",width="300",height="300",style="z-index:1")
+				canvas(id="layer2",width="300",height="300",style="z-index:2")
+			div(id="containerB" class="col-md-4 col-md-offset-6")
+				img(id="Canvas_",src="/img/"+imageB+".jpg",width="300",height="300",style="z-index:0")
+				canvas(id="cursor_",width="300",height="300",style="z-index:1")
+				canvas(id="layer2_",width="300",height="300",style="z-index:2")
+		form(method="post" action="/"+params.user+"/"+params.dat+"/"+params.attr+"&page"+page role="form" class="form-horizontal")
+			div(class="form-group")
+				div(class="col-md-offset-4 col-md-9")
+					div(class="radio")
+						label
+							input(type="radio",name="optionsRadios" id="optionsRadios1" value="0" ,checked)
+							Image A has a stronger presence of attribute than B
+					div(class="radio")
+						label
+							input(type="radio",name="optionsRadios" id="optionsRadios2" value="1" )
+							Image B has a stronger presence of attribute than A
+					div(class="radio")
+						label
+							input(type="radio",name="optionsRadios" id="optionsRadios3" value="2" )
+							Image A and B have similar relative strengths of attribute
+					div
+						label ImageA
+							input(type="text",id="coordinateL",name="coordinateL",value="0 0 0 0" readonly)
+						br
+						label ImageB
+							input(type="text",id="coordinateR",name="coordinateR",value="0 0 0 0" readonly)
+			div(class="form-group")
+				div(class="col-md-offset-4 col-md-9")
+					button(type="submit" class="btn btn-default") Submit
+		script(type="text/javascript" src="/js/main.js")

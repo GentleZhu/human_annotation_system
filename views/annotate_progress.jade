@@ -1,0 +1,101 @@
+doctype html
+html(lang="en")
+	head
+		meta(charset="utf-8")
+		meta(http-equiv="X-UA-Compatible" ,content="IE=edge")
+		meta(name="viewport",content="width=device-width, initial-scale=1")
+		script(type="text/javascript" src="/js/jquery.min.js")
+		link(rel="stylesheet",type="text/css",href="/css/bootstrap.min.css")
+		link(rel="stylesheet",type="text/css",href="/css/index.css")
+		title progress
+	body
+		h1(align="center") Human augmented annotation system
+		h2(align="center") Author: Qi Zhu, Yong Jae Lee
+		h3(align="center") Annotator: #{username}
+		div(style="top:10%" class="col-md-6 col-md-offset-3" )
+			table(class="table table-bordered")
+				tr
+					th Dataset
+					th Attribute
+					th Progress
+				tr
+					td LFW10
+					td baldhead
+					td 
+						-if(progress[0]<amount[0])
+							a(href='javascript:DoPost("#{username}","LFW10","baldhead",'+progress[0]+')') #{progress[0]}/#{amount[0]}
+						-else
+							| Finished!
+				tr
+					td LFW10
+					td darkhair
+					td
+						-if(progress[1]<amount[1])
+							a(href='javascript:DoPost("#{username}","LFW10","darkhair",'+progress[1]+')') #{progress[1]}/#{amount[1]}
+						-else
+							| Finished!
+				tr
+					td LFW10
+					td eyesopen
+					td
+						-if(progress[2]<amount[2]) 
+							a(href='javascript:DoPost("#{username}","LFW10","eyesopen",'+progress[2]+')') #{progress[2]}/#{amount[2]}
+						-else
+							| Finished!
+				tr
+					td LFW10
+					td goodlooking
+					td
+						-if(progress[3]<amount[3]) 
+							a(href='javascript:DoPost("#{username}","LFW10","goodlooking",'+progress[3]+')') #{progress[3]}/#{amount[3]}
+						-else
+							| Finished!
+				tr
+					td LFW10
+					td masculinelooking
+					td
+						-if(progress[4]<amount[4]) 
+							a(href='javascript:DoPost("#{username}","LFW10","masculinelooking",'+progress[4]+')') #{progress[4]}/#{amount[4]}
+						-else
+							| Finished!
+				tr
+					td LFW10
+					td mouthopen
+					td
+						-if(progress[5]<amount[5])  
+							a(href='javascript:DoPost("#{username}","LFW10","mouthopen",'+progress[5]+')') #{progress[5]}/#{amount[5]}
+						-else
+							| Finished!
+				tr
+					td LFW10
+					td smile
+					td 
+						-if(progress[6]<amount[6])  
+							a(href='javascript:DoPost("#{username}","LFW10","smile",'+progress[6]+')') #{progress[6]}/#{amount[6]}
+						-else
+							| Finished!
+				tr
+					td LFW10
+					td vforehead
+					td 
+						-if(progress[7]<amount[7])
+							a(href='javascript:DoPost("#{username}","LFW10","vforehead",'+progress[7]+')') #{progress[7]}/#{amount[7]}
+						-else
+							| Finished!
+				tr
+					td LFW10
+					td v_teeth
+					td 
+						-if(progress[8]<amount[8])
+							a(href='javascript:DoPost("#{username}","LFW10","v_teeth",'+progress[8]+')') #{progress[8]}/#{amount[8]}
+						-else
+							| Finished!
+				tr
+					td LFW10
+					td young
+					td 
+						-if(progress[9]<amount[9])
+							a(href='javascript:DoPost("#{username}","LFW10","young",'+progress[9]+')') #{progress[9]}/#{amount[9]}
+						-else
+							| Finished!
+		script(type="text/javascript" src="/js/post.js")

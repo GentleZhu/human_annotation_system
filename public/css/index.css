@@ -1,0 +1,4 @@
+html,body{width:100%;height:100%;margin: 0;}
+#title{position: relative;height: 30%;}
+#Canvas,#cursor,#layer2{position: absolute;cursor:none;left:20%;}
+#Canvas_,#cursor_,#layer2_{position: absolute;cursor:none;right:20%;}
