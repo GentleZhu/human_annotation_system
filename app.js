@@ -68,7 +68,7 @@ app.post('/load',function (req,res) {
 	//console.log(req.params)
 	var pageNum=parseInt(req.body.page);
 	var pair=train_pair[req.body.attr][pageNum].split(' ');
-	console.log(pair)
+	//console.log(pair)
 	if (pair.length!=3)
 		console.log("File error");
 	//res.render('annotation')
@@ -97,6 +97,6 @@ app.post('/:user/:dat/:attr&page:id',function (req,res) {
 		res.render('index');
 	//res.render('index',)
 });
-app.listen(8080, function(){
-	console.log('Running on port 8080!');
+app.listen(6666, function(){
+	console.log('Running on port 6666!');
 });
