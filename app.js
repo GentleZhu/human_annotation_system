@@ -33,6 +33,12 @@ function load_data () {
 	
 	return train_pair;
 }
+
+String.prototype.replaceAll = function(search, replacement) {
+    var target = this;
+    return target.replace(new RegExp(search, 'g'), replacement);
+};
+
 train_pair=load_data();
 //console.log(train_pair)
 app.post('/login', function(req,res){
@@ -40,21 +46,24 @@ app.post('/login', function(req,res){
 	var folder_exist=fs.existsSync(dirname);
 	var attribute_progress=[0,0,0,0,0,0,0,0,0,0];
 	var output;
-	if(folder_exist == true)
+	//console.log(dirname);
+	if(folder_exist == true){
+		//console.log(dirname);
 		for (var i=0;i<attribute_dataset.length;i++){
-			
-			var exists=fs.existsSync(dirname+'/LFW10_'+attribute_dataset[i])
+			var exists=fs.existsSync(dirname+'/LFW10_'+attribute_dataset[i]);
 			if (exists == true){
-				//console.log('wc  '+dirname+'/'+attribute_dataset[i]);
-			    	output=exec('wc  -l '+dirname+'/LFW10_'+attribute_dataset[i], {encoding:'utf-8'});
+					//console.log('wc  '+dirname+'/'+attribute_dataset[i]);
+			    	output=exec('wc  -l '+dirname.replaceAll(' ','\\ ')+'/LFW10_'+attribute_dataset[i], {encoding:'utf-8'});
 			    	//console.log(output)
 			    	var cut=output.split(' ');
 			    	attribute_progress[i]=cut[0];
 			}
 		}
-	else
+	}
+	else{
 		//console.log('./annotation/'+req.body.InputName)
 		fs.mkdirSync(dirname);
+	}
 	res.render('annotate_progress',{username:req.body.InputName,progress:attribute_progress,amount:attribute_amount});
 	//res.render('/index.html',{userid: '2333'});
 });
@@ -97,6 +106,6 @@ app.post('/:user/:dat/:attr&page:id',function (req,res) {
 		res.render('index');
 	//res.render('index',)
 });
-app.listen(6666, function(){
-	console.log('Running on port 6666!');
+app.listen(8080, function(){
+	console.log('Running on port 8080!');
 });
